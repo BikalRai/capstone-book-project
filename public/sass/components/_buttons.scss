@@ -1,0 +1,23 @@
+@mixin btn($bgcolor: $white, $color: $white) {
+  background-color: $bgcolor;
+  padding: $base-padding $base-padding * 3;
+  border: none;
+  border-radius: $base-padding * 2;
+  color: $color;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.btn {
+  @include btn;
+}
+
+@each $k, $v in $colors {
+  .btn-#{$k} {
+    @include btn($v, lighten($v, 50%));
+
+    &:hover {
+      background-color: darken($v, 20%);
+    }
+  }
+}
