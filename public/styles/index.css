@@ -44,10 +44,27 @@ img {
 }
 
 .navbar {
-  box-shadow: 0px -4px 10px 1px rgba(0, 0, 0, 0.75);
   padding: 1.5rem;
 }
+.navbar form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.navbar form input {
+  border: none;
+  outline: none;
+  padding: 0.75rem;
+}
+.navbar form input:focus {
+  cursor: pointer;
+}
 
+@media (min-width: 500px) {
+  .navbar form {
+    flex-direction: row;
+  }
+}
 .btn {
   background-color: #eeeeee;
   padding: 0.75rem 2.25rem;

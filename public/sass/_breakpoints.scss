@@ -1,0 +1,30 @@
+$breakpoints: (
+  'small': 380px,
+  'phone': 600px,
+  'tablet': 720px,
+  'laptop': 992px,
+);
+
+@mixin sm {
+  @media (min-width: map-get($breakpoints, 'small')) {
+    @content;
+  }
+}
+
+@mixin ph {
+  @media (min-width: map-get($breakpoints, 'phone')) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: map-get($breakpoints, 'lablet')) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: map-get($breakpoints, 'laptop')) {
+    @content;
+  }
+}

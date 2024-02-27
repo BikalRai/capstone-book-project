@@ -7,6 +7,29 @@
 
 .navbar {
   @extend %flex-layout;
-  box-shadow: $base-box-shadow;
   padding: $base-padding * 2;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $base-margin;
+
+    input {
+      border: none;
+      outline: none;
+      padding: $base-padding;
+
+      &:focus {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .navbar {
+    form {
+      flex-direction: row;
+    }
+  }
 }
