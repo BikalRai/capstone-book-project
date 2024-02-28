@@ -8,6 +8,7 @@
 body {
   min-height: 100dvh;
   background-color: $secondary;
+  padding: $base-padding * 2;
 }
 
 a {
@@ -27,4 +28,13 @@ img {
   color: $primary-color;
   font-size: 2rem;
   font-weight: 600;
+}
+
+footer {
+  position: sticky;
+  top: 100%;
+  left: 0;
+  bottom: 0;
+  padding: $base-padding * 2;
+  color: $primary-color;
 }

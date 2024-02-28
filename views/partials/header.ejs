@@ -10,11 +10,17 @@
   </head>
   <body>
     <header>
-      <nav class="navbar">
+      <nav class="navbar container">
         <a href="" class="logo">LOGO</a>
-        <form action="#!">
-          <input type="search" placeholder="Enter book name" />
-          <button class="btn-primary">Search</button>
+        <form action="/addBook">
+          <!-- based on the currentPage value display the respective button -->
+          <% if (currentPage === 'home') { %>
+          <button class="btn-primary">Add Book</button>
+          <% } else { %>
+          <button class="btn-primary" name="return" value="back">
+            Go Back
+          </button>
+          <% } %>
         </form>
       </nav>
     </header>

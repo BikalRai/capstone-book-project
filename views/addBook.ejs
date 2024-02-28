@@ -1,0 +1,20 @@
+<%- include('./partials/header.ejs') %>
+<main>
+  <section class="container">
+    <form class="add" action="/add" method="post">
+      <h1>Add a book</h1>
+      <input type="text" name="title" placeholder="Enter book title" />
+      <textarea
+        name="desc"
+        id="desc"
+        cols="30"
+        rows="10"
+        placeholder="Enter book description"
+      ></textarea>
+      <input type="text" name="isbn" placeholder="Enter book isbn number" />
+
+      <button class="btn-primary">Add Book</button>
+    </form>
+  </section>
+</main>
+<%- include('./partials/footer.ejs') %>

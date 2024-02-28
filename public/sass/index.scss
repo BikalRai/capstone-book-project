@@ -6,3 +6,40 @@
 @import './grid';
 @import './components/nav';
 @import './components/buttons';
+
+.add {
+  box-shadow: $base-box-shadow;
+  padding: $base-padding * 2;
+  display: grid;
+  gap: $base-margin;
+
+  max-width: 600px;
+  margin: auto;
+
+  h1 {
+    color: $primary-color;
+  }
+
+  input {
+    display: block;
+    padding: $base-padding * 2;
+    outline: none;
+    border: none;
+    background-color: $tertiary;
+    color: $white;
+  }
+
+  textarea {
+    display: block;
+    padding: $base-padding * 2;
+    resize: none;
+    outline: none;
+    border: none;
+    background-color: $tertiary;
+    color: $white;
+  }
+
+  ::placeholder {
+    color: $white;
+  }
+}
