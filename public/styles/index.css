@@ -137,8 +137,31 @@ footer {
   background-color: #bbbbbb;
 }
 
+.book {
+  display: flex;
+  gap: 0.75rem;
+  border-top: 1px solid #393e46;
+  padding: 2.25rem;
+}
+.book .book__img {
+  flex: 1;
+}
+.book .book__details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+.book .book__details h1 {
+  color: #00adb5;
+}
+.book .book__details p {
+  color: #eeeeee;
+}
+
 .add {
-  box-shadow: 0px -4px 10px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.15);
   padding: 1.5rem;
   display: grid;
   gap: 0.75rem;

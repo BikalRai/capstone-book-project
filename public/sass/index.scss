@@ -7,6 +7,35 @@
 @import './components/nav';
 @import './components/buttons';
 
+.book {
+  display: flex;
+  gap: $base-margin;
+  // box-shadow: $base-box-shadow;
+  border-top: 1px solid $tertiary;
+  padding: $base-padding * 3;
+
+  .book__img {
+    flex: 1;
+  }
+
+  .book__details {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $base-padding;
+
+    h1 {
+      color: $primary-color;
+    }
+
+    p {
+      color: $white;
+    }
+  }
+}
+
 .add {
   box-shadow: $base-box-shadow;
   padding: $base-padding * 2;

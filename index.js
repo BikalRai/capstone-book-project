@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import pg from 'pg';
@@ -18,9 +18,30 @@ db.connect();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  // currentPage value to be passed to the ejs
-  res.render('index.ejs', { currentPage: 'home' });
+const getImgUrl = async (isbn) => {
+  try {
+    const result = await axios.get(
+      `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
+    );
+
+    return result.request.res.responseUrl;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+app.get('/', async (req, res) => {
+  //get all the books and display
+  try {
+    const data = await db.query('SELECT * FROM books');
+
+    // await getImgUrl('0-553-10354-7');
+
+    // currentPage value to be passed to the ejs
+    res.render('index.ejs', { currentPage: 'home', books: data.rows });
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 app.get('/addBook', (req, res) => {
@@ -35,10 +56,27 @@ app.get('/addBook', (req, res) => {
   res.render('addBook.ejs', { currentPage: 'add' });
 });
 
-app.post('/add', (req, res) => {
+app.post('/add', async (req, res) => {
   const title = req.body.title;
-  const desc = req.body.decs;
+  const desc = req.body.desc;
   const isbn = req.body.isbn;
+
+  try {
+    // try to get img cover url from api
+    const imgUrl = await axios.get(
+      `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
+    );
+
+    // insert one data to db
+    await db.query(
+      'INSERT INTO books (book_title, book_desc, book_isbn, book_img_url) VALUES ($1, $2, $3, $4);',
+      [title, desc, isbn, imgUrl.request.res.responseUrl]
+    );
+
+    res.redirect('/');
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 app.listen(port, () => {

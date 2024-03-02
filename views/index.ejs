@@ -1,18 +1,26 @@
 <%- include ('./partials/header.ejs') %>
 <main>
-  <section class="book container">
-    <div class="book__img">
-      <img src="" alt="" />
-    </div>
-    <div class="book__details">
-      <h1>Book Titile</h1>
-      <p class="book__description">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente minus
-        provident quasi exercitationem, non dolores beatae consequuntur ducimus
-        omnis recusandae cumque, illo neque distinctio optio veritatis quos
-        nostrum autem doloribus.
-      </p>
-    </div>
-  </section>
+  <% if (locals.books) { %>
+  <div class="books">
+    <% books.map(book => { %>
+    <section class="book container">
+      <div class="book__img">
+        <img src="<%= book.book_img_url %>" alt="" />
+      </div>
+      <div class="book__details">
+        <div class="book__details-info">
+          <h1><%= book.book_title %></h1>
+          <p class="book__description"><%= book.book_desc %></p>
+        </div>
+        <form action="">
+          <button class="btn-primary" name="bookId" value="<%= book.id %>">
+            View More
+          </button>
+        </form>
+      </div>
+    </section>
+    <% }) %>
+  </div>
+  <% } %>
 </main>
 <%- include('./partials/footer.ejs') %>
