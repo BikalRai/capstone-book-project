@@ -38,6 +38,7 @@ footer {
   bottom: 0;
   padding: 1.5rem;
   color: #00adb5;
+  border-top: 3px solid #eeeeee;
 }
 
 .container {
@@ -137,10 +138,14 @@ footer {
   background-color: #bbbbbb;
 }
 
+.site__desc {
+  color: #eeeeee;
+}
+
 .book {
   display: flex;
   gap: 0.75rem;
-  border-top: 1px solid #393e46;
+  border-top: 1px solid #eeeeee;
   padding: 2.25rem;
 }
 .book .book__img {

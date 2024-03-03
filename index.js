@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import pg from 'pg';
@@ -18,17 +18,17 @@ db.connect();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const getImgUrl = async (isbn) => {
-  try {
-    const result = await axios.get(
-      `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
-    );
+// const getImgUrl = async (isbn) => {
+//   try {
+//     const result = await axios.get(
+//       `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
+//     );
 
-    return result.request.res.responseUrl;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+//     return result.request.res.responseUrl;
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 
 app.get('/', async (req, res) => {
   //get all the books and display
@@ -73,6 +73,37 @@ app.post('/add', async (req, res) => {
       [title, desc, isbn, imgUrl.request.res.responseUrl]
     );
 
+    res.redirect('/');
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// view the specifice book
+app.get('/view', async (req, res) => {
+  const bookId = req.query.bookId;
+
+  try {
+    const result = await db.query('SELECT * FROM books where id = $1', [
+      bookId,
+    ]);
+
+    res.render(`viewBook.ejs`, { book: result.rows[0], currentPage: 'view' });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.post('/del', async (req, res) => {
+  const bookId = req.body.bookId;
+
+  // console.log(bookId, 'delete');
+
+  try {
+    // delete query to delete book
+    const result = await db.query(`DELETE FROM books WHERE id = $1`, [bookId]);
+
+    // console.log(result, 'delete');
     res.redirect('/');
   } catch (error) {
     console.log(error.message);

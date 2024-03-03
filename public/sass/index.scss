@@ -7,11 +7,15 @@
 @import './components/nav';
 @import './components/buttons';
 
+.site__desc {
+  color: $white;
+}
+
 .book {
   display: flex;
   gap: $base-margin;
   // box-shadow: $base-box-shadow;
-  border-top: 1px solid $tertiary;
+  border-top: 1px solid $white;
   padding: $base-padding * 3;
 
   .book__img {

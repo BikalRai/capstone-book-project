@@ -1,0 +1,22 @@
+<%- include('./partials/header.ejs') %>
+<main>
+  <% if (locals.book) { %>
+  <section class="book container">
+    <div class="book__img">
+      <img src="<%= book.book_img_url %>" alt="" />
+    </div>
+    <div class="book__details">
+      <div class="book__details-info">
+        <h1><%= book.book_title %></h1>
+        <p class="book__description"><%= book.book_desc %></p>
+      </div>
+      <form action="/del" method="POST">
+        <button class="btn-primary" name="bookId" value="<%= book.id %>">
+          Delete
+        </button>
+      </form>
+    </div>
+  </section>
+  <% } %>
+</main>
+<%- include('./partials/footer.ejs') %>

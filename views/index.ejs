@@ -1,4 +1,7 @@
 <%- include ('./partials/header.ejs') %>
+<div class="site__desc container" style="padding: 2rem 0">
+  <h1>Books that I have read</h1>
+</div>
 <main>
   <% if (locals.books) { %>
   <div class="books">
@@ -12,7 +15,7 @@
           <h1><%= book.book_title %></h1>
           <p class="book__description"><%= book.book_desc %></p>
         </div>
-        <form action="">
+        <form action="/view">
           <button class="btn-primary" name="bookId" value="<%= book.id %>">
             View More
           </button>
