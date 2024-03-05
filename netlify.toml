@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build" # Specify the build command if needed
+  command = "npm start" # Specify the build command if needed
   publish = "public" # Specify the directory with your built files
   functions = "./netlify/functions" # Specify the directory with your serverless functions (if any)
   base = "/" # Specify the base directory if your site is not at the root of your repository
