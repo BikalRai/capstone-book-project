@@ -3,3 +3,13 @@
   publish = "public" # Specify the directory with your built files
   functions = "functions" # Specify the directory with your serverless functions (if any)
   base = "/" # Specify the base directory if your site is not at the root of your repository
+
+  [functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
+
