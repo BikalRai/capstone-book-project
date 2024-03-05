@@ -7,7 +7,8 @@
     "watch-sass": "sass --no-source-map --watch public/sass/index.scss public/styles/index.css",
     "nodemon-watch": "nodemon index.js -e *",
     "dev": "npm-run-all --parallel watch-sass nodemon-watch",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "",
